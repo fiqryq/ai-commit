@@ -1,0 +1,27 @@
+# LuaRocks artifacts
+luarocks_manifest / *.rockspec
+
+# Editor swap / temp files
+*~
+*.swp
+.DS_Store
+
+# IDE / tooling
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+
+# Log files
+*.log
+
+# User config
+.ai-commit-config.json
+
+# Temporary files
+/tmp/
+/dist/
+
+# Environment files
+.env
