@@ -7,7 +7,6 @@ luarocks_manifest / *.rockspec
 .DS_Store
 
 # IDE / tooling
-.vscode/
 .idea/
 
 # OS files
@@ -24,4 +23,5 @@ Thumbs.db
 /dist/
 
 # Environment files
-.env
+config.bat
+node_modules
