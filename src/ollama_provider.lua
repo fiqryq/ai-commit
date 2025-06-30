@@ -2,7 +2,11 @@ local M = {}
 local json = require("dkjson")
 local socket = require("socket")
 
-function M.generate_commit(diff, model, ollama_host)
+function M.generate_commit(diff, model, ollama_host, user_config)
+	local max_len = user_config and user_config.max_diff_length or 4096
+	if #diff > max_len then
+		diff = diff:sub(1, max_len)
+	end
 	if diff == "" then
 		return "chore: no changes staged for commit"
 	end
@@ -46,7 +50,6 @@ Do not include any explanations, extra punctuation, or quotes.
 	file:write(payload_json)
 	file:close()
 
-	-- Build safe curl command using @file for POST data
 	local cmd = string.format(
 		[[curl -s -X POST %s/api/chat -H "Content-Type: application/json" --data @%s]],
 		ollama_host,

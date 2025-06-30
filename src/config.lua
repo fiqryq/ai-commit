@@ -46,10 +46,19 @@ function M.interactive_setup()
 		ollama_host = "http://localhost:11434"
 	end
 
+	io.write("Max diff length (default 4096): ")
+	local max_diff_length = io.read()
+	if max_diff_length == "" then
+		max_diff_length = 4096
+	else
+		max_diff_length = tonumber(max_diff_length)
+	end
+
 	local config = {
 		default_provider = provider,
 		default_model = model,
 		ollama_host = ollama_host,
+		max_diff_length = max_diff_length,
 	}
 
 	M.save_config(config)

@@ -50,7 +50,7 @@ handle:close()
 local commit_message
 
 if provider == "ollama" then
-	commit_message = ollama.generate_commit(diff, model, user_config.ollama_host)
+	commit_message = ollama.generate_commit(diff, model, user_config.ollama_host, user_config)
 else
 	commit_message = generator.generate_commit(diff)
 end
